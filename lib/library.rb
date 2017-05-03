@@ -19,14 +19,16 @@ end
 class Book
 
   def self.add(title, author)
-    if Author.find(author)[0]['name'] == author
+    if Author.find(author).ntuples > 0
       id = Author.find(author)[0]['id']
     else
-      id = Author.add(author)
+      id = Author.add(author)[0]['id']
     end
     DB.exec("INSERT INTO book Values (uuid_generate_v4(), '#{title}', '#{id}') RETURNING id;")
   end
 
-  
+  def self.find(title)
+    DB.exec("SELECT * FROM book WHERE title = '#{title}';")
+  end
 
 end

@@ -25,8 +25,13 @@ describe 'Book' do
 
   describe '#add' do
     it 'adds a new book to the database' do
-      binding.pry
       expect(Book.add("The Great Gatsby", 'F. Scott Fitzgerald')[0]['id']).to match(UUID_MATCHER)
+    end
+  end
+
+  describe '#find' do
+    it 'finds a book based on the title' do
+      expect(Book.find("The Great Gatsby")[0]['title']).to eq("The Great Gatsby")
     end
   end
 
