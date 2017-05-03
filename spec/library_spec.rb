@@ -14,7 +14,19 @@ describe 'Author' do
 
   describe '#find' do
     it "finds an author in the database by name" do
-      expect(Author.find('F. Scott Fitzgerald')[0]["id"]).to match(UUID_MATCHER)
+      expect(Author.find('F. Scott Fitzgerald')[0]["name"]).to eq('F. Scott Fitzgerald')
+    end
+  end
+
+end
+
+
+describe 'Book' do
+
+  describe '#add' do
+    it 'adds a new book to the database' do
+      binding.pry
+      expect(Book.add("The Great Gatsby", 'F. Scott Fitzgerald')[0]['id']).to match(UUID_MATCHER)
     end
   end
 
