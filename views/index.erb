@@ -63,6 +63,6 @@
   <% end %>
   <h2>Authors:</h2>
   <% Author.all.to_a.each do |author| %>
-    <a href="/<%= author[0]['id'] %>"><%= author[0]['id'] %></a>
+    <a href="/<%= author['name'] %>"><%= author['name'] %></a><br>
   <% end %>
 </div>
