@@ -32,3 +32,20 @@ class Book
   end
 
 end
+
+class Patreon
+
+  def self.add(first_name, last_name, book_id)
+    full_name = first_name + " " + last_name
+    DB.exec("INSERT INTO Patreon VALUES (uuid_generate_v4(), '#{full_name}', '#{book_id}', '#{Date.today}') RETURNING id;")
+  end
+
+  def self.find(name)
+    DB.exec("SELECT * FROM patreon WHERE name = '#{name}';")
+  end
+
+  def self.all
+    DB.exec("SELECT * FROM patreon;")
+  end
+
+end
