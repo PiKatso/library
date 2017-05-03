@@ -18,6 +18,10 @@ end
 
 class Book
 
+  def self.all
+    DB.exec("SELECT * FROM book;")
+  end
+
   def self.add(title, author)
     if Author.find(author).ntuples > 0
       id = Author.find(author)[0]['id']

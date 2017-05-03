@@ -22,6 +22,12 @@ end
 
 describe 'Book' do
 
+  describe '#all' do
+    it 'returns all book objects in the database' do
+      expect(Book.add("The Great Gatsby", 'F. Scott Fitzgerald')[0]['id']).to match(UUID_MATCHER)
+    end
+  end
+
   describe '#add' do
     it 'adds a new book to the database' do
       expect(Book.add("The Great Gatsby", 'F. Scott Fitzgerald')[0]['id']).to match(UUID_MATCHER)

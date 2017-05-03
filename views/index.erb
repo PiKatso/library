@@ -1,12 +1,64 @@
-<%= # sample index html
-# <form action="/phrase_parser">
-#   <div class="form-group">
-#      <label for="title">gimme phrase or word!</label>
-#      <input name="phrase1" class="form-control" type="text">
-#      <label for="title">gimme another!</label>
-#      <input name="phrase2" class="form-control" type="text">
-#   </div>
-#   <hr>
-#   <button action="/" class="btn btn-success">what am i?</button>
-# </form>
-%>
+<div class="col-md-8">
+  <div class="row" id="author-form">
+    <h2>Add an Author:</h2>
+    <form action="/add-author" method="post">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="first-name">First Name:</label>
+          <input name="first-name" class="form-control" type="text" required>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="last-name">Last Name:</label>
+          <input name="last-name" class="form-control" type="text">
+        </div>
+      </div>
+      <hr>
+      <button action="/" class="btn btn-info">Add Author</button>
+    </form>
+  </div>
+  <div class="row" id="book-form">
+    <h2>Add a Book:</h2>
+    <form action="/add-book" method="post">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="title">Title:</label>
+          <input name="title" class="form-control" type="text" required>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="author">Author:</label>
+          <input name="author" class="form-control" type="text" required>
+        </div>
+      </div>
+      <hr>
+      <button action="/" class="btn btn-success">Add Book</button>
+    </form>
+  </div>
+  <div class="row" id="search-form">
+    <h2>Search for Book:</h2>
+    <form action="/search-book" method="post">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="search-title">Title:</label>
+          <input name="search-title" class="form-control" type="text">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="search-author">Author:</label>
+          <input name="search-author" class="form-control" type="text">
+        </div>
+      </div>
+      <button action="/" class="btn btn-warning">Search</button>
+    </form>
+  </div>
+</div>
+<div class="col-md-4">
+  <h2>Library books:</h2>
+  <% Book.all.to_a.each do |book| %>
+    <a href="/<%= book['id'] %>"><%= book['title'] %></a>
+  <% end %>
+</div>
