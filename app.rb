@@ -10,6 +10,8 @@ get('/') do
 end
 
 post('/add-author') do
-  name = params.fetch('name')
-  
+  first_name = params.fetch('first-name')
+  last_name = params.fetch('last-name')
+  Author.add(first_name, last_name)
+  erb(:index)
 end

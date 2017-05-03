@@ -5,12 +5,21 @@ DB = PG.connect({:dbname => 'library'})
 
 class Author
 
-  def self.add(name)
-    DB.exec("INSERT INTO author VALUES (uuid_generate_v4(), '#{name}') RETURNING id;")
+  def self.add(first_name, last_name)
+    full_name = first_name + " " + last_name
+    DB.exec("INSERT INTO author VALUES (uuid_generate_v4(), '#{full_name}') RETURNING id;")
   end
 
-  def self.find(name)
-    DB.exec("SELECT * FROM author WHERE name = '#{name}';")
+  def self.find_by_id(value)
+    DB.exec("SELECT * FROM author WHERE 'id' = '#{value}';")
+  end
+
+  def self.find_by_name(name)
+    DB.exec("SELECT * FROM author WHERE 'name' = '#{name}';")
+  end
+
+  def self.all
+    DB.exec("SELECT * FROM author;")
   end
 
 end
