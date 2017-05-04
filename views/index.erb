@@ -36,6 +36,15 @@
       <hr>
       <button action="/" class="btn btn-success">Add Book</button>
     </form>
+    <div id="your-checkouts">
+    <% unless @user_id.empty? %>
+    <h2>Your Checkouts:</h2>
+      <% Checkout.find_by_user(@user_id).each do |record| %>
+      <a href="/books/<%= record['book_id'] %>"><%= Book.find_by_id(record['book_id'])[0]['title'] %></a> - <%= record['checkout_date'] %>
+      <br>
+      <% end %>
+    <% end %>
+    </div>
   </div>
   <!-- <div class="row" id="search-form">
     <h2>Search for Book:</h2>
@@ -56,7 +65,7 @@
     </form>
   </div> -->
 </div>
-<div class="col-md-4">
+<div class="col-md-4" id="sidebar">
   <h2>Library books:</h2>
   <% Book.all.to_a.each do |book| %>
     <a href="/books/<%= book['id'] %>"><%= book['title'] %></a><br>
@@ -65,11 +74,6 @@
   <% Author.all.to_a.each do |author| %>
     <a href="/authors/<%= author['id'] %>"><%= author['name'] %></a><br>
   <% end %>
-  <% unless @user_id.empty? %>
-  <h2>Your Checkouts:</h2>
-    <% Checkout.find_by_user(@user_id).each do |record| %>
-    <a href="/books/<%= record['book_id'] %>"><%= Book.find_by_id(record['book_id'])[0]['title'] %></a> - <%= record['checkout_date'] %>
-    <br>
-    <% end %>
-  <% end %>
+
+
 </div>

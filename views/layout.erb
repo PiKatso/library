@@ -15,9 +15,10 @@
         </div>
         <div class="col-md-6">
           <% if @user_id.empty? %>
-          <a href="/login" class="btn btn-success">login/sign-up</a>
+          <a href="/login" id="login" class="btn btn-success">login</a>
           <% else %>
           <h3>Current User: <%= User.find_by_id(@user_id)[0]['name'] %>
+          <br>
           <a href="/logout" class="btn btn-danger">Sign-out</a>
           <% end %>
         </div>

@@ -3,3 +3,19 @@
   width: 75%;
   padding-bottom: 30px;
 }
+
+#login {
+  margin-top: 50px;
+}
+
+#your-checkouts {
+  background-color: #eee;
+  padding: 30px;
+  border-radius: 5%;
+  margin-top: 30px;
+}
+
+#sidebar {
+  border-left: 1px solid #eee;
+  padding-left: 60px;
+}

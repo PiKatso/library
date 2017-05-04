@@ -86,4 +86,8 @@ class Checkout
     DB.exec("SELECT * FROM checkout_record WHERE book_id = '#{book_id}';")
   end
 
+  def self.check_duplicate(user_id, book_id)
+    DB.exec("SELECT * FROM checkout_record WHERE book_id = '#{book_id}' AND user_id = '#{user_id}' ;")
+  end
+
 end
