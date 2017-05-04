@@ -6,7 +6,7 @@ DB = PG.connect({:dbname => 'library'})
 class User
 
   def self.add(username)
-    DB.exec("INSERT INTO username VALUES (uuid_generate_v4(), '#{username}') RETURNING id;") unless User.find_by_name(username).any?
+    DB.exec("INSERT INTO username VALUES (uuid_generate_v4(), '#{username.downcase}') RETURNING id;") unless User.find_by_name(username).any?
   end
 
   def self.find_by_id(id)
@@ -14,7 +14,7 @@ class User
   end
 
   def self.find_by_name(name)
-    DB.exec("SELECT * FROM username WHERE name = '#{name}';")
+    DB.exec("SELECT * FROM username WHERE name = '#{name.downcase}';")
   end
 
 end
@@ -22,7 +22,7 @@ end
 class Author
 
   def self.add(author)
-    DB.exec("INSERT INTO author VALUES (uuid_generate_v4(), '#{author}') RETURNING id;")
+    DB.exec("INSERT INTO author VALUES (uuid_generate_v4(), '#{author.downcase}') RETURNING id;")
   end
 
   def self.find_by_id(value)
@@ -30,7 +30,7 @@ class Author
   end
 
   def self.find_by_name(name)
-    DB.exec("SELECT * FROM author WHERE name = '#{name}';")
+    DB.exec("SELECT * FROM author WHERE name = '#{name.downcase}';")
   end
 
   def self.all
@@ -52,11 +52,13 @@ class Book
     else
       id = Author.add(author)[0]['id']
     end
-    DB.exec("INSERT INTO book Values (uuid_generate_v4(), '#{title}', '#{id}') RETURNING id;")
+    unless Book.find_by_title(title).any?
+    DB.exec("INSERT INTO book Values (uuid_generate_v4(), '#{title.downcase}', '#{id}') RETURNING id;")
+    end
   end
 
   def self.find_by_title(title)
-    DB.exec("SELECT * FROM book WHERE title = '#{title}';")
+    DB.exec("SELECT * FROM book WHERE title = '#{title.downcase}';")
   end
 
   def self.find_by_id(id)
