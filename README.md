@@ -6,6 +6,22 @@ This program allows a user to sign in and create books, checkout books and revie
 
 Installation is quick and easy! First you can open this link <!--HEROKU LINK HERE--> to see the webpage in action live online. Or you can clone this repository to your machine, navigate to the file path in your terminal, and run 'app.rb' by typing '$ruby app.rb'. If you chose to clone the repository, after you run 'app.rb' you will need to copy the localhost path into your web browswer. The standard localhost for Sinatra is port 4567
 
+###Data Base Setup
+
+Set up data Bases:
+
+book
+id uuid PRIMARY KEY, title VARCHAR, author_id uuid
+
+author
+id uuid PRIMARY KEY, name VARCHAR
+
+username
+id uuid PRIMARY KEY, name VARCHAR
+
+checkout_record
+id uuid PRIMARY KEY, name_id uuid, book_id uuid, checkout_date DATE
+
 ## Built With
 
 * Ruby
