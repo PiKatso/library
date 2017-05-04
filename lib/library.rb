@@ -6,7 +6,7 @@ DB = PG.connect({:dbname => 'library'})
 class User
 
   def self.add(username)
-    DB.exec("INSERT INTO username VALUES (uuid_generate_v4(), '#{username}') RETURNING id;")
+    DB.exec("INSERT INTO username VALUES (uuid_generate_v4(), '#{username}') RETURNING id;") unless User.find_by_name(username).any?
   end
 
   def self.find_by_id(id)
@@ -70,19 +70,10 @@ class Book
 
 end
 
-class Patreon
+class Checkout
 
-  def self.add(first_name, last_name, book_id)
-    full_name = first_name + " " + last_name
-    DB.exec("INSERT INTO Patreon VALUES (uuid_generate_v4(), '#{full_name}', '#{book_id}', '#{Date.today}') RETURNING id;")
-  end
-
-  def self.find(name)
-    DB.exec("SELECT * FROM patreon WHERE name = '#{name}';")
-  end
-
-  def self.all
-    DB.exec("SELECT * FROM patreon;")
+  def self.add(user_id, book_id)
+    DB.exec("INSERT INTO checkout_record Values (uuid_generate_v4(), '#{user_id}', '#{book_id}', '#{Date.today}') RETURNING id;")
   end
 
 end

@@ -10,6 +10,7 @@ RSpec.configure do |config|
     DB.exec("DELETE FROM book *;")
     DB.exec("DELETE FROM author *;")
     DB.exec("DELETE FROM checkout_record *;")
+    DB.exec("DELETE FROM username *;")
     Book.add('The Great Gatsby', 'F. Scott Fitzgerald')
     User.add('Kai')
   end

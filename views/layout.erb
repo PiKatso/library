@@ -10,8 +10,17 @@
   <body>
     <div class="jumbotron">
       <div class="container">
-        <h1>Epicodus Library</h1>
-        <a href="/login" class="btn btn-success">login/sign-up</a>
+        <div class="col-md-6">
+          <h1>Epicodus Library</h1>
+        </div>
+        <div class="col-md-6">
+          <% if @user_id.empty? %>
+          <a href="/login" class="btn btn-success">login/sign-up</a>
+          <% else %>
+          <h3>Current User: <%= User.find_by_id(@user_id)[0]['name'] %>
+          <a href="/logout" class="btn btn-danger">Sign-out</a>
+          <% end %>
+        </div>
       </div>
     </div>
     <div class="container">
