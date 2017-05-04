@@ -14,7 +14,7 @@ class Author
   end
 
   def self.find_by_name(name)
-    DB.exec("SELECT * FROM author WHERE 'name' = '#{name}';")
+    DB.exec("SELECT * FROM author WHERE name = '#{name}';")
   end
 
   def self.all
@@ -45,6 +45,11 @@ class Book
 
   def self.find_by_id(id)
     DB.exec("SELECT * FROM book WHERE id = '#{id}';")
+  end
+
+  def self.find_by_author(author)
+    author_id = Author.find_by_name(author)[0]['id']
+    DB.exec("SELECT * FROM book WHERE author_id = '#{author_id}';")
   end
 
 end

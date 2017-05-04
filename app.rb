@@ -31,3 +31,9 @@ get('/books/:id') do
   @author = Author.find_by_id(author)
   erb(:book)
 end
+
+get('/authors/:id') do
+  id = params['id']
+  @author = Author.find_by_id(id)
+  # book = 
+end
