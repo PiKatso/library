@@ -59,10 +59,10 @@
 <div class="col-md-4">
   <h2>Library books:</h2>
   <% Book.all.to_a.each do |book| %>
-    <a href="/books/<%= book['id'] %>"><%= book['title'] %></a>
+    <a href="/books/<%= book['id'] %>"><%= book['title'] %></a><br>
   <% end %>
   <h2>Authors:</h2>
   <% Author.all.to_a.each do |author| %>
-    <a href="/<%= author['id'] %>"><%= author['name'] %></a><br>
+    <a href="/authors/<%= author['id'] %>"><%= author['name'] %></a><br>
   <% end %>
 </div>

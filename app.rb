@@ -35,5 +35,6 @@ end
 get('/authors/:id') do
   id = params['id']
   @author = Author.find_by_id(id)
-  # book = 
+  @books = Book.find_by_author(@author[0]['name'])
+  erb(:author)
 end

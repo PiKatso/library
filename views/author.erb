@@ -1,8 +1,9 @@
-<!-- <h1><%= @book[0]['title'] %></h1>
+<h1><%= @author[0]['name'] %></h1>
+<h4>Books by <%= @author[0]['name'] %></h4>
+<% @books.map do |book| %>
+<a href="/books/<%= book['id'] %>"><h5><%= book['title'] %><br></h5></a>
 
-<h2><%= @author[0]['name']%></h2> -->
-
-
+<% end %>
 
 <br>
 <a href="/" class="btn btn-info">Home</a>
