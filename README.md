@@ -1,14 +1,6 @@
-# <!--PROJECT NAME HERE-->
+# Epicodus Library
 
-<!--PROJECT DESCRIPTION HERE-->
-
-### Prerequisites
-
-Web browser with ES6 compatibility
-Examples: Chrome, Safari
-
-Ruby <!--VERSION HERE-->
-Bundler
+This program allows a user to sign in and create books, checkout books and review the books history.
 
 ### Installing
 
@@ -17,23 +9,33 @@ Installation is quick and easy! First you can open this link <!--HEROKU LINK HER
 ## Built With
 
 * Ruby
+* Browser: Chrome or Safari
 * Sinatra
 * HTML
 * CSS
 * Bootstrap https://getbootstrap.com/
-* ES6
-* Jquery https://jquery.com/
+* SQL
+* PG
 
 ## Specifications
 
 | behavior |  input   |  output  |
 |----------|:--------:|:--------:|
-<!--SPECS GO HERE-->
- 
+| Web App accepts text, symbols and symbols as input | input: a$$  | output: a$$  |
+| web app connects to databases to store info | input: book title, author name  | output: book id, book title, author name |
+| allows user to create new book | input: book title, author name | output: book id, book title, author name |
+| allows user to checkout book | input: select book | output: add record of checkout |
+| allows user to review book record | input: select book | output: check out yyyy,mm,dd |
+| allows patron to see personal checkout history | index | output: list checked out books |
+| allows patron to sign in | login input: 'Kai' | output: logged in as 'Kai', record reflect 'Kai's' checkouts |
+<!-- |  |  |  | -->
+
 ## Authors
 
-* <!--YOUR NAME HERE-->
+* Kat Gifford & Kai de Rochemont
 
 ## License
 
-Copyright © 2017 <!--YOUR NAME HERE-->
+MIT
+
+Copyright © 2017 Kat Gifford & Kai de Rochemont
