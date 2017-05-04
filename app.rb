@@ -63,3 +63,15 @@ get('/authors/:id') do
   @books = Book.find_by_author(@author[0]['name'])
   erb(:author)
 end
+
+post('/book-checkout') do
+  @user_id = session[:id]
+  book_id = params['book-id']
+  Checkout.add(@user_id, book_id)
+  erb(:index)
+end
+
+get('/search-title') do
+  Book.all
+  binding.pry
+end

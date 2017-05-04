@@ -76,4 +76,12 @@ class Checkout
     DB.exec("INSERT INTO checkout_record Values (uuid_generate_v4(), '#{user_id}', '#{book_id}', '#{Date.today}') RETURNING id;")
   end
 
+  def self.find_by_user(user_id)
+    DB.exec("SELECT * FROM checkout_record WHERE user_id = '#{user_id}';")
+  end
+
+  def self.find_by_book(book_id)
+    DB.exec("SELECT * FROM checkout_record WHERE book_id = '#{book_id}';")
+  end
+
 end

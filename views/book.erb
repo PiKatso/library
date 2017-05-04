@@ -3,4 +3,19 @@
 <h2><%= @author[0]['name']%></h2>
 
 <br>
-<a href="/" class="btn btn-info">Home</a>
+<form action="/book-checkout" method="post">
+  <input type="hidden" value="<%= @book[0]['id'] %>" id="book-id" name="book-id">
+  <a href="/" class="btn btn-info">Home</a>
+  <% unless @user_id.empty? %>
+  <button type="submit" class="btn btn-success">Checkout</button>
+  <% end %>
+</form>
+
+<h2>Checkout History</h2>
+<% Checkout.find_by_book(@book[0]['id']).each do |record| %>
+  <div class="checkout-record">
+  <%= User.find_by_id(record['user_id'])[0]['name'] %>
+  <%= record['checkout_date'] %>
+  <br>
+  <% end %>
+</div>
