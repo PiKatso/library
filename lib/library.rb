@@ -9,6 +9,14 @@ class User
     DB.exec("INSERT INTO username VALUES (uuid_generate_v4(), '#{username}') RETURNING id;")
   end
 
+  def self.find_by_id(id)
+    DB.exec("SELECT * FROM username WHERE id = '#{id}';")
+  end
+
+  def self.find_by_name(name)
+    DB.exec("SELECT * FROM username WHERE name = '#{name}';")
+  end
+
 end
 
 class Author

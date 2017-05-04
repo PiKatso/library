@@ -8,6 +8,20 @@ describe 'User' do
     end
   end
 
+  describe '#find_by_id' do
+    it "adds a new user to the database" do
+
+      id = User.find_by_name('Kai')[0]['id']
+      expect(User.find_by_id(id)[0]['name']).to eq('Kai')
+    end
+  end
+
+  describe '#find_by_name' do
+    it "adds a new user to the database" do
+      expect(User.find_by_name('Kai')[0]['id']).to match(UUID_MATCHER)
+    end
+  end
+
 end
 
 describe 'Author' do

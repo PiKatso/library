@@ -26,7 +26,7 @@ end
 
 get('/login') do
   username = params['user-name']
-
+  User.add(username)
   erb(:login)
 end
 
