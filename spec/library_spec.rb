@@ -1,5 +1,15 @@
 require "spec_helper"
 
+describe 'User' do
+
+  describe '#add' do
+    it "adds a new user to the database" do
+      expect(User.add('Kai')[0]['id']).to match(UUID_MATCHER)
+    end
+  end
+
+end
+
 describe 'Author' do
 
   describe '#add' do
@@ -51,21 +61,21 @@ describe 'Book' do
 
 end
 
-describe 'Patreon' do
+# describe 'Patreon' do
+#
+#   describe '#add' do
+#     it 'creates a new checkout record' do
+#       book_id = Book.add("The Great Gatsby", 'F. Scott Fitzgerald')[0]['id']
+#       expect(Patreon.add("John", "Doe", book_id)[0]['id']).to match(UUID_MATCHER)
+#     end
+#   end
+#
+#   describe '#find' do
+#     it 'finds a checkout record based on inputted name' do
+#       book_id = Book.add("The Great Gatsby", 'F. Scott Fitzgerald')[0]['id']
+#       Patreon.add("Jane", "Eyre", book_id)
+#       expect(Patreon.find("Jane Eyre")[0]['name']).to eq('Jane Eyre')
+#     end
+#   end
 
-  describe '#add' do
-    it 'creates a new checkout record' do
-      book_id = Book.add("The Great Gatsby", 'F. Scott Fitzgerald')[0]['id']
-      expect(Patreon.add("John", "Doe", book_id)[0]['id']).to match(UUID_MATCHER)
-    end
-  end
-
-  describe '#find' do
-    it 'finds a checkout record based on inputted name' do
-      book_id = Book.add("The Great Gatsby", 'F. Scott Fitzgerald')[0]['id']
-      Patreon.add("Jane", "Eyre", book_id)
-      expect(Patreon.find("Jane Eyre")[0]['name']).to eq('Jane Eyre')
-    end
-  end
-
-end
+# end

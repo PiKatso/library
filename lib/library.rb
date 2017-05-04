@@ -3,6 +3,14 @@ require 'pry'
 
 DB = PG.connect({:dbname => 'library'})
 
+class User
+
+  def self.add(username)
+    DB.exec("INSERT INTO username VALUES (uuid_generate_v4(), '#{username}') RETURNING id;")
+  end
+
+end
+
 class Author
 
   def self.add(author)

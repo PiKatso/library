@@ -24,6 +24,12 @@ post('/add-book') do
   erb(:index)
 end
 
+get('/login') do
+  username = params['user-name']
+
+  erb(:login)
+end
+
 get('/books/:id') do
   id = params['id']
   @book = Book.find_by_id(id)

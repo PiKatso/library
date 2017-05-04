@@ -9,7 +9,7 @@ RSpec.configure do |config|
   config.after(:each) do
     DB.exec("DELETE FROM book *;")
     DB.exec("DELETE FROM author *;")
-    DB.exec("DELETE FROM patreon *;")
+    DB.exec("DELETE FROM checkout_record *;")
     Book.add('The Great Gatsby', 'F. Scott Fitzgerald')
   end
 end
